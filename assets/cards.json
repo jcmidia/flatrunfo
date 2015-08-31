@@ -3,32 +3,36 @@
 	"id": 1,
 	"nome": "Zico",
 	"tipo": "A",
-	"jogos": 500,
-	"gols": 200,
-	"titulos": 12
+	"jogos": 508,
+	"gols": 731,
+	"titulos": 13,
+	"img": "/assets/images/cards/zico.jpg"
 },
 {
 	"id": 2,
-	"nome": "Andrade",
+	"nome": "Dida",
 	"tipo": "A",
-	"jogos": 601,
-	"gols": 20,
-	"titulos": 12
+	"jogos": 357,
+	"gols": 264,
+	"titulos": 5,
+	"img": "/assets/images/cards/dida.jpg"
 },
 {
 	"id": 3,
 	"nome": "Júnior",
 	"tipo": "A",
-	"jogos": 501,
-	"gols": 200,
-	"titulos": 12
+	"jogos": 857,
+	"gols": 73,
+	"titulos": 13,
+	"img": "/assets/images/cards/dida.jpg"
 },
 {
 	"id": 4,
-	"nome": "Leonardo",
+	"nome": "Leandro",
 	"tipo": "A",
-	"jogos": 600,
-	"gols": 20,
-	"titulos": 12
+	"jogos": 417,
+	"gols": 14,
+	"titulos": 10,
+	"img": "/assets/images/cards/leandro.jpg"
 }
 ]
