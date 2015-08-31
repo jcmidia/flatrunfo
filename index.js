@@ -55,7 +55,7 @@ io.sockets.on('connection', function (socket){
 
 	  	if (room.people.length==2) {
 
-	  		var request = http1.get( "https://flatrunfo.herokuapp.com:"+app.get('port')+"/assets/cards.json", function(response) {
+	  		var request = http1.get( "https://flatrunfo.herokuapp.com/assets/cards.json", function(response) {
 	  	
 			  	var body = '';
 
