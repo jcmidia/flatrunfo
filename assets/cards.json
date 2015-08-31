@@ -34,5 +34,41 @@
 	"gols": 14,
 	"titulos": 10,
 	"img": "/assets/images/cards/leandro.jpg"
+},
+{
+	"id": 5,
+	"nome": "Petković",
+	"tipo": "A",
+	"jogos": 198,
+	"gols": 57,
+	"titulos": 4,
+	"img": "/assets/images/cards/pet.jpg"
+},
+{
+	"id": 6,
+	"nome": "Leônidas",
+	"tipo": "A",
+	"jogos": 149,
+	"gols": 153,
+	"titulos": 2,
+	"img": "/assets/images/cards/leonidas.jpg"
+},
+{
+	"id": 7,
+	"nome": "Zizinho",
+	"tipo": "A",
+	"jogos": 329,
+	"gols": 146,
+	"titulos": 3,
+	"img": "/assets/images/cards/zizinho.jpg"
+},
+{
+	"id": 8,
+	"nome": "Domingos",
+	"tipo": "A",
+	"jogos": 223,
+	"gols": 0,
+	"titulos": 3,
+	"img": "/assets/images/cards/domingos.jpg"
 }
 ]

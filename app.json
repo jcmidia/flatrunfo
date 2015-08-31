@@ -1,8 +1,8 @@
 {
-  "name": "Node.js Getting Started",
+  "name": "FLA Trunfo",
   "description": "A barebones Node.js app using Express 4",
-  "repository": "https://github.com/heroku/node-js-getting-started",
-  "logo": "http://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["node", "express", "static"],
+  "repository": "https://github.com/jcmidia/flatrunfo",
+  "logo": "",
+  "keywords": ["flamengo", "fla", "super trunfo"],
   "image": "heroku/nodejs"
 }

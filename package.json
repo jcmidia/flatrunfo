@@ -1,7 +1,8 @@
 {
-  "name": "socket-chat-example",
+  "name": "FLA Trunfo",
   "version": "0.0.1",
-  "description": "my first socket.io app",
+  "description": "A barebones Node.js app using Express 4",
+  "repository": "https://github.com/jcmidia/flatrunfo",
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.13.3",
