@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use("/assets", express.static(__dirname + '/assets'));
 
 http.listen(5000, function(){
-  console.log('listening on *:3000');
+  console.log('listening on *:5000');
 });
 
 var shortid = require('shortid');
