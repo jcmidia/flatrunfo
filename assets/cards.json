@@ -70,5 +70,14 @@
 	"gols": 0,
 	"titulos": 3,
 	"img": "/assets/images/cards/domingos.jpg"
+},
+{
+	"id": 9,
+	"nome": "Raul",
+	"tipo": "A",
+	"jogos": 228,
+	"gols": 0,
+	"titulos": 9,
+	"img": "/assets/images/cards/raul.jpg"
 }
 ]
