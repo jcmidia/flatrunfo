@@ -11,8 +11,11 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 app.use("/assets", express.static(__dirname + '/assets'));
 
-http.listen(process.env.PORT || 5000, function(){
-  console.log('listening on *:5000');
+
+app.set('port', (process.env.PORT || 3000));
+
+http.listen(app.get('port'), function(){
+  console.log('Node app is running on port', app.get('port'));
 });
 
 var shortid = require('shortid');
@@ -23,7 +26,6 @@ var Cards = require("./Cards.js");
 var people = {};
 var rooms = [];
 var cards = {};
-
 
 
 app.get('/', function(req, res){
@@ -53,7 +55,7 @@ io.sockets.on('connection', function (socket){
 
 	  	if (room.people.length==2) {
 
-	  		var request = http1.get( "http://localhost:3000/assets/cards.json", function(response) {
+	  		var request = http1.get( "https://flatrunfo.herokuapp.com:"+app.get('port')+"/assets/cards.json", function(response) {
 	  	
 			  	var body = '';
 

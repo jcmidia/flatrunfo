@@ -24,7 +24,7 @@
 	"jogos": 857,
 	"gols": 73,
 	"titulos": 13,
-	"img": "/assets/images/cards/dida.jpg"
+	"img": "/assets/images/cards/junior.jpg"
 },
 {
 	"id": 4,
@@ -79,5 +79,14 @@
 	"gols": 0,
 	"titulos": 9,
 	"img": "/assets/images/cards/raul.jpg"
+},
+{
+	"id": 10,
+	"nome": "Nunes",
+	"tipo": "A",
+	"jogos": 214,
+	"gols": 93,
+	"titulos": 7,
+	"img": "/assets/images/cards/nunes.jpg"
 }
 ]

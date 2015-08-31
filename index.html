@@ -344,7 +344,11 @@
         player = parseInt(data.pindex)+1;
 
         $.each(data.deck, function(index, val) {
-           $('#cards-player'+player+' ul li span[rel="'+index+'"]').text(val);
+          if (index=='img') {
+            $('#cards-player'+player+' img').attr("src", val);
+          }else{
+            $('#cards-player'+player+' ul li span[rel="'+index+'"]').text(val);
+          }
         });
 
         setTimeout(function() {
@@ -374,13 +378,21 @@
 
         if (player==1) {
           $.each(data.card2, function(index, val) {
-             $('#cards-player2 ul li span[rel="'+index+'"]').text(val);
+            if (index=='img') {
+              $('#cards-player2 img').attr("src", val);
+            }else{
+              $('#cards-player2 ul li span[rel="'+index+'"]').text(val);
+            }
           });
 
           $('#cards-player2 .cardactive').removeClass('cardoff');
         }else{
           $.each(data.card1, function(index, val) {
-             $('#cards-player1 ul li span[rel="'+index+'"]').text(val);
+              if (index=='img') {
+                $('#cards-player1 img').attr("src", val);
+              }else{
+                $('#cards-player1 ul li span[rel="'+index+'"]').text(val);
+              }
           });
 
           $('#cards-player1 .cardactive').removeClass('cardoff');
@@ -413,7 +425,11 @@
           setTimeout(function() {
 
               $.each(data.deck, function(index, val) {
-                 $('#cards-player'+player+' ul li span[rel="'+index+'"]').text(val);
+                  if (index=='img') {
+                    $('#cards-player'+player+' img').attr("src", val);
+                  }else{
+                    $('#cards-player'+player+' ul li span[rel="'+index+'"]').text(val);
+                  }
               });
 
               $('.cardactive li').removeClass('active');
