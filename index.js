@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 })); 
 app.use("/assets", express.static(__dirname + '/assets'));
 
-http.listen(3000, function(){
+http.listen(5000, function(){
   console.log('listening on *:3000');
 });
 
