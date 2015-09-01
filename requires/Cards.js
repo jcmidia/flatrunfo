@@ -114,7 +114,7 @@ Cards.prototype.play = function(key)
 		return 2;
 	}else{
 		decks.turn(0);
-		return 1;
+		return 0;
 	}
 
 };

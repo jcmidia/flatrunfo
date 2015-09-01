@@ -4,7 +4,12 @@ var turn = false;
 
 $('#formJoin').submit(function() {
   var username = $('#username').val();
-  socket.emit('join', username);
+  if (username!="") {
+    socket.emit('join', username);  
+  }else{
+    alert("Digite um nome para começar.");
+  }
+  
   return false;
 });
 
@@ -25,10 +30,15 @@ socket.on('new player', function(data){
 
 
 socket.on('left game', function(data){
-  alert("O jogador "+data.player.name+" saiu do jogo!");
+  turn = false;
+  $('#gameover').text("Você venceu! O jogador "+data.player.name+" saiu do jogo.");
+  $('#gameover').addClass('success');
+
+  $('#gameover').fadeIn();
 });
 
 socket.on('game over', function(data){
+  turn = false;
   if (data.winner==player) {
     $('#gameover').text('Parabéns, você venceu o jogo!');
     $('#gameover').addClass('success');
@@ -135,6 +145,9 @@ socket.on('new turn', function(data){
   if (data.winner==player) {
     $('#msg').text('Você venceu!');
     $('#msg').removeClass('failure success info').addClass('success');
+  }else if(data.winner==0){
+    $('#msg').text('Empate!');
+    $('#msg').removeClass('failure success info').addClass('info');
   }else{
     $('#msg').text('Você perdeu!');
     $('#msg').removeClass('failure success info').addClass('failure');

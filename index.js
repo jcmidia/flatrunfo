@@ -119,7 +119,6 @@ io.sockets.on('connection', function (socket){
 
         if (cards[room.id].getCards(0)===undefined || cards[room.id].getCards(1)===undefined) {
         	
-        	var winner=0;
         	if (cards[room.id].getCards(0)===undefined) {
         		winner=2;
         	}else{
@@ -136,8 +135,11 @@ io.sockets.on('connection', function (socket){
 
         	if (winner==1) {
         		room.turno=1;
-        	}else{
+        	}else if(winner==2){
         		room.turno=2;
+        	}else{
+        		if (room.turno==1) {room.turno=2}
+        		if (room.turno==2) {room.turno=1};
         	}
 
 			for (var index in room.people) {

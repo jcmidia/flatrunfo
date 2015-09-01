@@ -416,6 +416,7 @@ body {
   left: 0;
   height: 100%;
   transition: all 0.5s linear;
+  overflow: hidden;
 }
 .section.active {
   top: 0;
@@ -651,6 +652,100 @@ body {
 #gameover.failure {
   background-color: #d9534f;
   border-color: #d43f3a;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .login-content {
+    padding: 0 15px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .login-content .logo {
+    width: 100%;
+    padding: 50px 20px;
+    box-sizing: border-box;
+  }
+  .login-content .logo img {
+    width: 100%;
+  }
+
+  #formJoin {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 30px 20px;
+  }
+  #formJoin h2 {
+    font-size: 20px;
+  }
+  #formJoin input[type="text"] {
+    width: 175px;
+  }
+
+  .board {
+    left: 0;
+    top: 220px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  .board-content {
+    width: 100%;
+  }
+
+  .cards {
+    width: 50%;
+    height: 250px;
+    margin: 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  #timer {
+    font-size: 30px;
+    padding: 10px 20px;
+  }
+
+  .game-header {
+    height: auto;
+  }
+  .game-header .logo {
+    width: 200px;
+    position: static;
+    margin: 10px auto;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  .game-header .playername {
+    font-size: 12px;
+    height: auto;
+    line-height: normal;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  #msg {
+    top: 135px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+  }
+
+  .cardactive ul li {
+    padding: 10px;
+    font-size: 12px;
+  }
+  .cardactive ul li .key {
+    width: 50px;
+  }
+  .cardactive ul li:first-child .key {
+    display: none;
+  }
+
+  #gameover {
+    font-size: 20px;
+    height: 80px;
+    line-height: 80px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
