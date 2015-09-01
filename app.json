@@ -1,6 +1,7 @@
 {
   "name": "flatrunfo",
-  "description": "A barebones Node.js app using Express 4",
+  "version": "0.0.1",
+  "description": "Jogo com os ídolos do Flamengo inspirado no Super Trunfo.",
   "repository": "https://github.com/jcmidia/flatrunfo",
   "logo": "",
   "keywords": ["flamengo", "fla", "super trunfo"],

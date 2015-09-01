@@ -99,15 +99,6 @@
 	"img": "/assets/images/cards/carlinhos.jpg"
 },
 {
-	"id": 11,
-	"nome": "Carlinhos",
-	"tipo": "A",
-	"jogos": 517,
-	"gols": 23,
-	"titulos": 3,
-	"img": "/assets/images/cards/carlinhos.jpg"
-},
-{
 	"id": 12,
 	"nome": "Adílio",
 	"tipo": "A",

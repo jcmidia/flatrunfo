@@ -53,6 +53,17 @@ Cards.prototype.getCards = function(playerindex)
 
 };
 
+Cards.prototype.getNumCards = function(playerindex)
+{
+
+	if (playerindex==0) {
+		return this.player1.length;		
+	}else{
+		return this.player2.length;	
+	}
+
+};
+
 Cards.prototype.turn = function(winner)
 {
 	var temp_card1 = this.player1[0];

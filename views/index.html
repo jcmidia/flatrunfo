@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head>
+    <title>FLA Trunfo</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href="/assets/styles/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="login" class="section active">
+      <form id="formJoin" method="post">
+        <h2>Digite seu nome abaixo</h2>
+        <input type="text" name="username" id="username">
+        <input type="submit" value="Entrar">
+      </form>
+    </div>
+
+    <div id="game" class="section">
+      <div class="game-header">
+        <div class="playername player1">
+          <strong></strong> <span></span>
+        </div>
+        <div class="playername player2">
+          <strong></strong> <span></span>
+        </div>
+      </div>
+
+      <div id="gameover">
+        você venceu o jogo
+      </div>
+      
+      <div id="msg"></div>
+
+      <div class="board">
+        <div class="board-content">
+              <div class="cards" id="cards-player1">
+                
+                <div class="cardbg carddefault">
+
+                  <div class="cardinactive carddefault"></div>
+                  
+                  <div class="cardactive carddefault cardoff">
+                    <img src="https://imortaisdofutebol.files.wordpress.com/2012/04/zico3.jpg" alt="">
+                    <ul>
+                      <li>
+                        <span class="key">Nome</span>
+                        <span class="value" rel="nome"></span>
+                      </li>
+                      <li class="clickable">
+                        <span class="key">Jogos</span>
+                        <span class="value" rel="jogos"></span>
+                      </li>
+                      <li class="clickable">
+                        <span class="key">Gols</span>
+                        <span class="value" rel="gols"></span>
+                      </li>
+                      <li class="clickable">
+                        <span class="key">Títulos</span>
+                        <span class="value" rel="titulos"></span>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+              <div class="cards" id="cards-player2">
+                <div class="cardbg carddefault">
+
+                  <div class="cardinactive carddefault"></div>
+                  
+                  <div class="cardactive carddefault cardoff">
+                    <img src="https://imortaisdofutebol.files.wordpress.com/2012/04/zico3.jpg" alt="">
+                    <ul>
+                      <li>
+                        <span class="key">Nome</span>
+                        <span class="value" rel="nome"></span>
+                      </li>
+                      <li class="clickable">
+                        <span class="key">Jogos</span>
+                        <span class="value" rel="jogos"></span>
+                      </li>
+                      <li class="clickable">
+                        <span class="key">Gols</span>
+                        <span class="value" rel="gols"></span>
+                      </li>
+                      <li class="clickable">
+                        <span class="key">Títulos</span>
+                        <span class="value" rel="titulos"></span>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="/assets/scripts/main.js"></script>
+  </body>
+</html>

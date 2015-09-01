@@ -19,8 +19,8 @@ http.listen(app.get('port'), function(){
 });
 
 var shortid = require('shortid');
-var Room = require("./Rooms.js");
-var Cards = require("./Cards.js");
+var Room = require("./requires/Rooms.js");
+var Cards = require("./requires/Cards.js");
 
 
 var people = {};
@@ -29,7 +29,7 @@ var cards = {};
 
 
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/views/index.html');
 });
 
 
@@ -56,7 +56,6 @@ io.sockets.on('connection', function (socket){
 	  	if (room.people.length==2) {
 
 	  		var request = http1.get( "http://flatrunfo.herokuapp.com/assets/cards.json", function(response) {
-	  			console.log(response);
 	  	
 			  	var body = '';
 
@@ -71,8 +70,8 @@ io.sockets.on('connection', function (socket){
 			        cards[room.id].setCards(room.people, data);
 
 
-			        var deck1 = cards[room.id].getCards(0).length;
-			        var deck2 = cards[room.id].getCards(1).length;
+			        var deck1 = cards[room.id].getNumCards(0);
+			        var deck2 = cards[room.id].getNumCards(1);
 			        cardsqty = {deck1: deck1, deck2: deck2 };
 
 
@@ -113,8 +112,9 @@ io.sockets.on('connection', function (socket){
         	io.sockets.in(room.id).emit("game over", {winner: winner});
 
         }else{
-        	var deck1 = cards[room.id].getCards(0).length;
-        	var deck2 = cards[room.id].getCards(1).length;
+        	var deck1 = cards[room.id].getNumCards(0);
+        	var deck2 = cards[room.id].getNumCards(1);
+
         	cardsqty = {deck1: deck1, deck2: deck2 };
 
         	if (room.turno==1) {
