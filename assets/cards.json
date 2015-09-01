@@ -142,5 +142,131 @@
 	"gols": 28,
 	"titulos": 11,
 	"img": "/assets/images/cards/andrade.jpg"
+},
+{
+	"id": 17,
+	"nome": "Adriano",
+	"tipo": "A",
+	"jogos": 56,
+	"gols": 29,
+	"titulos": 3,
+	"img": "/assets/images/cards/adriano.jpg"
+},
+{
+	"id": 18,
+	"nome": "Fio Maravilha",
+	"tipo": "A",
+	"jogos": 289,
+	"gols": 79,
+	"titulos": 2,
+	"img": "/assets/images/cards/fiomaravilha.jpg"
+},
+{
+	"id": 19,
+	"nome": "Bebeto",
+	"tipo": "A",
+	"jogos": 95,
+	"gols": 41,
+	"titulos": 3,
+	"img": "/assets/images/cards/bebeto.jpg"
+},
+{
+	"id": 20,
+	"nome": "Léo Moura",
+	"tipo": "A",
+	"jogos": 519,
+	"gols": 47,
+	"titulos": 8,
+	"img": "/assets/images/cards/leomoura.jpg"
+},
+{
+	"id": 21,
+	"nome": "Obina",
+	"tipo": "A",
+	"jogos": 182,
+	"gols": 47,
+	"titulos": 4,
+	"img": "/assets/images/cards/obina.jpg"
+},
+{
+	"id": 22,
+	"nome": "Ronaldo Angelim",
+	"tipo": "A",
+	"jogos": 284,
+	"gols": 17,
+	"titulos": 6,
+	"img": "/assets/images/cards/ronaldoangelim.jpg"
+},
+{
+	"id": 23,
+	"nome": "Sávio",
+	"tipo": "A",
+	"jogos": 265,
+	"gols": 95,
+	"titulos": 2,
+	"img": "/assets/images/cards/savio.jpg"
+},
+{
+	"id": 24,
+	"nome": "Tita",
+	"tipo": "A",
+	"jogos": 289,
+	"gols": 89,
+	"titulos": 7,
+	"img": "/assets/images/cards/tita.jpg"
+},
+{
+	"id": 25,
+	"nome": "Cantareli",
+	"tipo": "A",
+	"jogos": 557,
+	"gols": 0,
+	"titulos": 12,
+	"img": "/assets/images/cards/cantareli.jpg"
+},
+{
+	"id": 26,
+	"nome": "Mozer",
+	"tipo": "A",
+	"jogos": 293,
+	"gols": 21,
+	"titulos": 7,
+	"img": "/assets/images/cards/mozer.jpg"
+},
+{
+	"id": 27,
+	"nome": "Romário",
+	"tipo": "A",
+	"jogos": 240,
+	"gols": 204,
+	"titulos": 3,
+	"img": "/assets/images/cards/romario.jpg"
+},
+{
+	"id": 28,
+	"nome": "Ronaldinho Gaúcho",
+	"tipo": "A",
+	"jogos": 72,
+	"gols": 28,
+	"titulos": 3,
+	"img": "/assets/images/cards/ronaldinho.jpg"
+},
+{
+	"id": 29,
+	"nome": "Reyes",
+	"tipo": "A",
+	"jogos": 196,
+	"gols": 7,
+	"titulos": 1,
+	"img": "/assets/images/cards/reyes.jpg"
+},
+{
+	"id": 30,
+	"nome": "Dequinha",
+	"tipo": "A",
+	"jogos": 384,
+	"gols": 8,
+	"titulos": 3,
+	"img": "/assets/images/cards/dequinha.jpg"
 }
 ]
