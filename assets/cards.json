@@ -111,9 +111,45 @@
 	"id": 12,
 	"nome": "Adílio",
 	"tipo": "A",
-	"jogos": 517,
-	"gols": 23,
-	"titulos": 3,
-	"img": "/assets/images/cards/carlinhos.jpg"
+	"jogos": 615,
+	"gols": 128,
+	"titulos": 10,
+	"img": "/assets/images/cards/adilio.jpg"
+},
+{
+	"id": 13,
+	"nome": "Rondinelli",
+	"tipo": "A",
+	"jogos": 396,
+	"gols": 14,
+	"titulos": 6,
+	"img": "/assets/images/cards/rondinelli.jpg"
+},
+{
+	"id": 14,
+	"nome": "Evaristo",
+	"tipo": "A",
+	"jogos": 223,
+	"gols": 107,
+	"titulos": 5,
+	"img": "/assets/images/cards/evaristo.jpg"
+},
+{
+	"id": 15,
+	"nome": "Julio Cesar",
+	"tipo": "A",
+	"jogos": 163,
+	"gols": 0,
+	"titulos": 4,
+	"img": "/assets/images/cards/juliocesar.jpg"
+},
+{
+	"id": 16,
+	"nome": "Andrade",
+	"tipo": "A",
+	"jogos": 569,
+	"gols": 28,
+	"titulos": 11,
+	"img": "/assets/images/cards/andrade.jpg"
 }
 ]
