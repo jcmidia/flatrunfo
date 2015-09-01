@@ -402,7 +402,11 @@ body {
   overflow: hidden;
   font-family: Helvetica, sans-serif;
   color: #333;
-  background: #f5f5f5;
+  background: #ddd;
+}
+
+*:focus {
+  outline: 0 !important;
 }
 
 .section {
@@ -417,19 +421,65 @@ body {
   top: 0;
 }
 
-#formJoin {
+.login-content {
+  text-align: center;
   position: absolute;
   left: 50%;
   top: 50%;
-  text-align: center;
   -webkit-transform: translate3d(-50%, -50%, 0);
   transform: translate3d(-50%, -50%, 0);
-  padding: 50px 100px;
+}
+.login-content .logo {
+  padding: 50px 0;
+  background: #000;
+  border-radius: 30px 30px 0 0;
+}
+.login-content .logo img {
+  width: 300px;
+}
+
+#formJoin {
+  display: inline-block;
+  padding: 30px 100px;
   background-color: #a40000;
-  border-radius: 30px;
+  border-radius: 0 0 30px 30px;
 }
 #formJoin h2 {
+  margin: 0 0 10px;
   color: #fff;
+}
+#formJoin input[type="text"] {
+  height: 50px;
+  float: left;
+  width: 250px;
+  border: none;
+  box-sizing: border-box;
+  border-radius: 10px 0 0 10px;
+  padding: 0 10px;
+}
+#formJoin input[type="submit"] {
+  height: 50px;
+  line-height: 50px;
+  border: none;
+  padding: 0;
+  margin: 0;
+  float: left;
+  background: #000;
+  color: #fff;
+  padding: 0 15px;
+  border-radius: 0 10px 10px 0;
+}
+
+#timer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  font-size: 56px;
+  background-color: #000;
+  padding: 20px 40px;
+  border-radius: 30px 0 0 0;
+  color: #fff;
+  display: none;
 }
 
 .game-header {
@@ -439,6 +489,17 @@ body {
   width: 100%;
   height: 100px;
   background-color: #a40000;
+}
+.game-header .logo {
+  width: 250px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+}
+.game-header .logo img {
+  width: 100%;
 }
 
 .playername {
@@ -469,7 +530,7 @@ body {
 
 .cards {
   width: 400px;
-  height: 480px;
+  height: 460px;
   float: left;
   margin: 0 50px;
 }
@@ -512,11 +573,15 @@ body {
   padding: 10px 30px;
   border-bottom: 1px solid #ccc;
 }
+.cardactive ul li:last-child {
+  border-bottom: none;
+}
 .cardactive ul li.clickable {
   cursor: pointer;
 }
 .cardactive ul li.clickable:hover, .cardactive ul li.clickable.active {
-  color: red;
+  background-color: #a40000;
+  color: #fff;
 }
 .cardactive ul li span.key {
   display: inline-block;

@@ -75,8 +75,25 @@ io.sockets.on('connection', function (socket){
 			        cardsqty = {deck1: deck1, deck2: deck2 };
 
 
+			        var roomid=room.id;
+
 			        for (var index in room.people) {
 						io.to(room.people[index]).emit("start game", {pindex: index, deck: cards[room.id].getCards(index), cardsqty: cardsqty });
+
+						
+
+						setTimeout(function() {
+							deck1 = cards[room.id].getNumCards(0);
+			        		deck2 = cards[room.id].getNumCards(1);
+
+			        		var winner=0
+			        		if (deck1>deck2) {
+			        			winner=1;
+			        		}else{
+			        			winner=2;
+			        		}
+							io.sockets.in(roomid).emit("game over", {winner: winner});
+						}, 300000);
 					}
 			        
 			    });
@@ -117,10 +134,10 @@ io.sockets.on('connection', function (socket){
 
         	cardsqty = {deck1: deck1, deck2: deck2 };
 
-        	if (room.turno==1) {
-        		room.turno=2;
-        	}else{
+        	if (winner==1) {
         		room.turno=1;
+        	}else{
+        		room.turno=2;
         	}
 
 			for (var index in room.people) {

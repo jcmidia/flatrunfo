@@ -29,23 +29,40 @@ socket.on('left game', function(data){
 });
 
 socket.on('game over', function(data){
-  setTimeout(function() {
-    if (data.winner==player) {
-      $('#gameover').text('Parabéns, você venceu o jogo!');
-      $('#gameover').addClass('success');
-    }else{
-      $('#gameover').text('Você perdeu o jogo!');
-      $('#gameover').addClass('failure');
-    }
+  if (data.winner==player) {
+    $('#gameover').text('Parabéns, você venceu o jogo!');
+    $('#gameover').addClass('success');
+  }else{
+    $('#gameover').text('Você perdeu o jogo!');
+    $('#gameover').addClass('failure');
+  }
 
-    $('#gameover').fadeIn();
-  }, 2000);
+  $('#gameover').fadeIn();
 });
+
+
+function millisToMinutesAndSeconds(millis) {
+  var minutes = Math.floor(millis / 60000);
+  var seconds = ((millis % 60000) / 1000).toFixed(0);
+  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+}
 
 
 socket.on('start game', function(data){
   $('.player1 span').text(" / "+data.cardsqty.deck1+" cartas ");
   $('.player2 span').text(" / "+data.cardsqty.deck2+" cartas ");
+
+  $('#timer').show();
+
+  var time=300000;
+  var timer = setInterval(function(){
+    time=time-100;
+    $('#timer').text( millisToMinutesAndSeconds(time) );
+    if (time==0) {
+      clearInterval(timer);
+    };
+  }, 100);
+  
 
   player = parseInt(data.pindex)+1;
 
