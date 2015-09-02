@@ -30,11 +30,14 @@ socket.on('new player', function(data){
 
 
 socket.on('left game', function(data){
+  console.log(data);
   turn = false;
-  $('#gameover').text("Você venceu! O jogador "+data.player.name+" saiu do jogo.");
-  $('#gameover').addClass('success');
+  if (data.status!="game over") {
+    $('#gameover').text("Você venceu! O jogador "+data.player.name+" saiu do jogo.");
+    $('#gameover').addClass('success');
 
-  $('#gameover').fadeIn();
+    $('#gameover').fadeIn();
+  };
 });
 
 socket.on('game over', function(data){
@@ -42,6 +45,9 @@ socket.on('game over', function(data){
   if (data.winner==player) {
     $('#gameover').text('Parabéns, você venceu o jogo!');
     $('#gameover').addClass('success');
+  }else if(data.winner==0){
+    $('#gameover').text('Empatou!');
+    $('#gameover').addClass('info');
   }else{
     $('#gameover').text('Você perdeu o jogo!');
     $('#gameover').addClass('failure');
@@ -51,11 +57,9 @@ socket.on('game over', function(data){
 });
 
 
-function millisToMinutesAndSeconds(millis) {
-  var minutes = Math.floor(millis / 60000);
-  var seconds = ((millis % 60000) / 1000).toFixed(0);
-  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-}
+socket.on('update time', function(data){
+  $('#timer').text(data.time);
+});
 
 
 socket.on('start game', function(data){
@@ -63,16 +67,6 @@ socket.on('start game', function(data){
   $('.player2 span').text(" / "+data.cardsqty.deck2+" cartas ");
 
   $('#timer').show();
-
-  var time=300000;
-  var timer = setInterval(function(){
-    time=time-100;
-    $('#timer').text( millisToMinutesAndSeconds(time) );
-    if (time==0) {
-      clearInterval(timer);
-    };
-  }, 100);
-  
 
   player = parseInt(data.pindex)+1;
 
@@ -139,61 +133,65 @@ socket.on('new play', function(data){
 
 socket.on('new turn', function(data){
 
-  $('.player1 span').text(" / "+data.cardsqty.deck1+" cartas ");
-  $('.player2 span').text(" / "+data.cardsqty.deck2+" cartas ");
+  if (data.status!="game over") {
 
-  if (data.winner==player) {
-    $('#msg').text('Você venceu!');
-    $('#msg').removeClass('failure success info').addClass('success');
-  }else if(data.winner==0){
-    $('#msg').text('Empate!');
-    $('#msg').removeClass('failure success info').addClass('info');
-  }else{
-    $('#msg').text('Você perdeu!');
-    $('#msg').removeClass('failure success info').addClass('failure');
-  }
+      $('.player1 span').text(" / "+data.cardsqty.deck1+" cartas ");
+      $('.player2 span').text(" / "+data.cardsqty.deck2+" cartas ");
 
-  $('#msg').addClass('active');
+      if (data.winner==player) {
+        $('#msg').text('Você venceu!');
+        $('#msg').removeClass('failure success info').addClass('success');
+      }else if(data.winner==0){
+        $('#msg').text('Empate!');
+        $('#msg').removeClass('failure success info').addClass('info');
+      }else{
+        $('#msg').text('Você perdeu!');
+        $('#msg').removeClass('failure success info').addClass('failure');
+      }
 
-  setTimeout(function() {
+      $('#msg').addClass('active');
 
-    $('#msg').removeClass('active');
+      setTimeout(function() {
 
-    $('.cardactive').addClass('cardoff');
+        $('#msg').removeClass('active');
 
-    setTimeout(function() {
-
-        $.each(data.deck, function(index, val) {
-            if (index=='img') {
-              $('#cards-player'+player+' img').attr("src", val);
-            }else{
-              $('#cards-player'+player+' ul li span[rel="'+index+'"]').text(val);
-            }
-        });
-
-        $('.cardactive li').removeClass('active');
+        $('.cardactive').addClass('cardoff');
 
         setTimeout(function() {
-          $('#cards-player'+player+' .cardinactive').addClass('cardoff');
-          setTimeout(function(){
-            $('#cards-player'+player+' .carddefault').removeClass('cardoff');
-            if (data.turn == player) {
-              $('#msg').text('Sua vez!');
-              $('#msg').removeClass('failure success info').addClass('info');
-              turn = true;
-            }else{
-              $('#msg').text('Vez do adversário!');
-              $('#msg').removeClass('failure success info').addClass('info');
-            }
-            $('#msg').show();
-          }, 600);
+
+            $.each(data.deck, function(index, val) {
+                if (index=='img') {
+                  $('#cards-player'+player+' img').attr("src", val);
+                }else{
+                  $('#cards-player'+player+' ul li span[rel="'+index+'"]').text(val);
+                }
+            });
+
+            $('.cardactive li').removeClass('active');
+
+            setTimeout(function() {
+              $('#cards-player'+player+' .cardinactive').addClass('cardoff');
+              setTimeout(function(){
+                $('#cards-player'+player+' .carddefault').removeClass('cardoff');
+                if (data.turn == player) {
+                  $('#msg').text('Sua vez!');
+                  $('#msg').removeClass('failure success info').addClass('info');
+                  turn = true;
+                }else{
+                  $('#msg').text('Vez do adversário!');
+                  $('#msg').removeClass('failure success info').addClass('info');
+                }
+                $('#msg').show();
+              }, 600);
+            }, 500);
+
+
         }, 500);
 
+        
+      }, 2000);
 
-    }, 500);
-
-    
-  }, 2000);
+  }
 
 
 });

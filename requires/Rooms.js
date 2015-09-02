@@ -5,6 +5,7 @@ function Room(id) {
   this.status = "available";
   this.private = false;
   this.turno = 1;
+  this.time=300000;
 };
 
 Room.prototype.addPerson = function(personID) {

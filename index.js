@@ -26,11 +26,22 @@ var Cards = require("./requires/Cards.js");
 var people = {};
 var rooms = [];
 var cards = {};
+var timer = [];
+
 
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/views/index.html');
 });
+
+
+function millisToMinutesAndSeconds(millis) {
+  var minutes = Math.floor(millis / 60000);
+  var seconds = ((millis % 60000) / 1000).toFixed(0);
+  return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+}
+
+
 
 
 io.sockets.on('connection', function (socket){
@@ -55,6 +66,8 @@ io.sockets.on('connection', function (socket){
 
 	  	if (room.people.length==2) {
 
+	  		room.status="playing";
+
 	  		var request = http1.get( "http://flatrunfo.herokuapp.com/assets/cards.json", function(response) {
 	  	
 			  	var body = '';
@@ -76,25 +89,38 @@ io.sockets.on('connection', function (socket){
 
 
 			        var roomid=room.id;
-
 			        for (var index in room.people) {
 						io.to(room.people[index]).emit("start game", {pindex: index, deck: cards[room.id].getCards(index), cardsqty: cardsqty });
-
-						
-
-						setTimeout(function() {
-							deck1 = cards[room.id].getNumCards(0);
-			        		deck2 = cards[room.id].getNumCards(1);
-
-			        		var winner=0
-			        		if (deck1>deck2) {
-			        			winner=1;
-			        		}else{
-			        			winner=2;
-			        		}
-							io.sockets.in(roomid).emit("game over", {winner: winner});
-						}, 300000);
 					}
+
+
+					timer[socket.id] = setInterval(function(){
+						room.time=room.time-1000;
+						console.log(room.time);
+
+						var timetext = millisToMinutesAndSeconds(room.time);
+
+						io.sockets.in(room.id).emit("update time", {time: timetext});
+
+						if (room.time==0) {
+							clearInterval(timer[socket.id]);
+
+							deck1 = cards[room.id].getNumCards(0);
+							deck2 = cards[room.id].getNumCards(1);
+
+							var winner=0
+							if (deck1>deck2) {
+								winner=1;
+							}else if(deck2>deck1){
+								winner=2;
+							}else{
+								winner=0;
+							}
+							io.sockets.in(room.id).emit("game over", {winner: winner});
+							room.status="game over";
+
+						};
+					}, 1000);
 			        
 			    });
 
@@ -126,6 +152,8 @@ io.sockets.on('connection', function (socket){
         	}
 
         	io.sockets.in(room.id).emit("game over", {winner: winner});
+        	room.status="game over";
+        	clearInterval(timer[socket.id]);
 
         }else{
         	var deck1 = cards[room.id].getNumCards(0);
@@ -143,7 +171,7 @@ io.sockets.on('connection', function (socket){
         	}
 
 			for (var index in room.people) {
-				io.to(room.people[index]).emit("new turn", {pindex: index, deck: cards[room.id].getCards(index), cardsqty: cardsqty, winner: winner, turn: room.turno });
+				io.to(room.people[index]).emit("new turn", {pindex: index, deck: cards[room.id].getCards(index), cardsqty: cardsqty, winner: winner, turn: room.turno, status: room.status });
 			}
         }
 
@@ -152,12 +180,15 @@ io.sockets.on('connection', function (socket){
 
   	socket.on('disconnect', function(){
 
+
 	  	var roomid = people[socket.id].inroom;
 	  	var playerleft = people[socket.id];
 
 	  	if(people[socket.id].inroom != null){
 	  		for (var index in rooms) {
 			  if (rooms[index].id==roomid) {
+			  	io.sockets.in(roomid).emit("left game", {player: playerleft, status: rooms[index].status});
+			  	rooms[index].status="game over";
 			  	rooms[ index ].removePerson(socket.id);
 			  	if (rooms[index].people.length==0) {
 			  		rooms.splice(index, 1);
@@ -166,8 +197,8 @@ io.sockets.on('connection', function (socket){
 			}
 	  	}
 	    delete people[socket.id];
-
-	    io.sockets.in(roomid).emit("left game", {player: playerleft});
+	    
+	    clearInterval(timer[socket.id]);
   	});
 
 });
