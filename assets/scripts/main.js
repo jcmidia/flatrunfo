@@ -11,9 +11,9 @@ window.fbAsyncInit = function() {
 
   function onLogin(response) {
     if (response.status == 'connected') {
-      FB.api('/me', function(data) {
+      FB.api('/me?fields=picture{url},first_name', function(data) {
         console.log(data);
-        socket.emit('join', data.first_name);  
+        socket.emit('login', data);  
       });
     }
   }
@@ -62,6 +62,11 @@ $('.help-link').click(function() {
   $('#modal-help').toggleClass('show');
 
   return false;
+});
+
+socket.on('rooms', function(data){
+
+  console.log(data);
 });
 
 
