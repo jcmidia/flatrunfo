@@ -62,19 +62,22 @@ function millisToMinutesAndSeconds(millis) {
 
 
 io.sockets.on('connection', function (socket){
-  	
+  	people[socket.id] = {"name" : "undefined", "inroom": null};
 
-  	socket.on('login', function(data){
-  		people[socket.id] = {"name" : data.first_name, "inroom": null, "fbid":data.id, "picture":data.picture};
+	socket.on('login', function(data){
+		
+		people[socket.id] = {"name" : data.first_name, "inroom": room.id, "fbid": data.id};
 
-  		io.sockets.emit("rooms", {rooms: rooms, players: people});
-  	});
+		io.sockets.emit("rooms", {rooms: rooms, players: people});
 
-  	socket.on('join', function(data){
+	});  	
+
+
+  	socket.on('join', function(username){
 	  	var room = getAvaliableRoomId();
 	  	room.addPerson(socket.id);
 
-	  	people[socket.id] = {"name" : data.first_name, "inroom": room.id, "picture":};
+	  	people[socket.id] = {"name" : username, "inroom": room.id};
 
 
 	  	var players = [];
