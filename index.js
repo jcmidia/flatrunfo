@@ -64,8 +64,8 @@ function millisToMinutesAndSeconds(millis) {
 io.sockets.on('connection', function (socket){
   	
 
-  	socket.on('login', function(){
-  		people[socket.id] = {"name" : data.first_name, "inroom": null, "fbid":data.id, "picture":data.picture.url};
+  	socket.on('login', function(data){
+  		people[socket.id] = {"name" : data.first_name, "inroom": null, "fbid":data.id, "picture":data.picture};
 
   		io.sockets.emit("rooms", {rooms: rooms, players: people});
   	});
