@@ -2,6 +2,8 @@ var socket = io();
 var player;
 var turn = false;
 
+alert();
+
 window.fbAsyncInit = function() {
   FB.init({
     appId      : '1634055343507101',
@@ -10,10 +12,11 @@ window.fbAsyncInit = function() {
   });
 
   function onLogin(response) {
+    console.log("chegou");
     if (response.status == 'connected') {
       FB.api('/me?fields=first_name', function(data) {
         console.log(data);
-        socket.emit('join', "teste");  
+        // socket.emit('join', "teste");  
       });
     }
   }

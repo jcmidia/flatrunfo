@@ -43,6 +43,9 @@ var timer = [];
 app.post('/', function(req, res){
   res.sendFile(__dirname + '/views/login.html');
 });
+app.get('/', function(req, res){
+  res.sendFile(__dirname + '/views/login.html');
+});
 
 app.get('/game', function(req, res){
   res.sendFile(__dirname + '/views/index.html');
