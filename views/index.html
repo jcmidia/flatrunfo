@@ -10,29 +10,11 @@
     <link rel="shortcut icon" type="image/png" href="/assets/favicon.png"/>
   </head>
   <body>
-    <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '1634055343507101',
-          xfbml      : true,
-          version    : 'v2.4'
-        });
-
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
     <div id="login" class="section active">
       <div class="login-content">
         <div class="logo"><img src="/assets/images/logo2.png" alt=""></div>
         <form id="formJoin" method="post">
-          <h2>Digite seu nome abaixo</h2>
+          <h2>Escolha uma sala abaixo</h2>
           <input type="text" name="username" id="username">
           <input type="submit" value="Entrar">
         </form>
