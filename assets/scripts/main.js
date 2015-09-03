@@ -13,7 +13,7 @@ window.fbAsyncInit = function() {
     if (response.status == 'connected') {
       FB.api('/me?fields=picture{url},first_name', function(data) {
         console.log(data);
-        socket.emit('login', data);  
+        socket.emit('login', data);
       });
     }
   }
@@ -65,7 +65,6 @@ $('.help-link').click(function() {
 });
 
 socket.on('rooms', function(data){
-
   console.log(data);
 });
 
