@@ -1,3 +1,6 @@
+var https = require('https');
+var fs = require('fs');
+
 var express = require('express');
 var app = require('express')();
 var http1 = require("http");
@@ -14,6 +17,15 @@ app.use("/assets", express.static(__dirname + '/assets'));
 
 app.set('port', (process.env.PORT || 3000));
 
+// var options = {
+//   key: fs.readFileSync('./key.pem', 'utf8'),
+//   cert: fs.readFileSync('./server.crt', 'utf8')
+// };
+
+// https.createServer(options, app).listen(app.get('port'), function(){
+//   console.log('Node app is running on port', app.get('port'));
+// });
+
 http.listen(app.get('port'), function(){
   console.log('Node app is running on port', app.get('port'));
 });
@@ -29,10 +41,10 @@ var cards = {};
 var timer = [];
 
 app.post('/', function(req, res){
-  res.sendFile(__dirname + '/views/index.html');
+  res.sendFile(__dirname + '/views/login.html');
 });
 
-app.get('/', function(req, res){
+app.get('/game', function(req, res){
   res.sendFile(__dirname + '/views/index.html');
 });
 
