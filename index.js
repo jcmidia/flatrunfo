@@ -96,7 +96,6 @@ io.sockets.on('connection', function (socket){
 
 					timer[socket.id] = setInterval(function(){
 						room.time=room.time-1000;
-						console.log(room.time);
 
 						var timetext = millisToMinutesAndSeconds(room.time);
 

@@ -13,6 +13,18 @@ $('#formJoin').submit(function() {
   return false;
 });
 
+$('.modal-close').click(function() {
+  $('.overlay').hide();
+  $(this).closest('.modal').removeClass('show')
+});
+
+$('.help-link').click(function() {
+  $('.overlay').toggle();
+  $('#modal-help').toggleClass('show');
+
+  return false;
+});
+
 
 socket.on('new player', function(data){
 
