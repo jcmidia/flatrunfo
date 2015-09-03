@@ -11,7 +11,8 @@ window.fbAsyncInit = function() {
 
   function onLogin(response) {
     if (response.status == 'connected') {
-      FB.api('/me?fields=first_name', function(data) {
+      FB.api('/me', function(data) {
+        console.log(data);
         socket.emit('join', data.first_name);  
       });
     }
