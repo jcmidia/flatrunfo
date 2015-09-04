@@ -10,57 +10,15 @@
     <link rel="shortcut icon" type="image/png" href="/assets/favicon.png"/>
   </head>
   <body>
-    <script>
-      // teste 1634062923506343
-      // produ 1634055343507101
-
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '1634062923506343',
-          xfbml      : true,
-          version    : 'v2.4'
-        });
-
-        function onLogin(response) {
-          if (response.status == 'connected') {
-            FB.api('/me?fields=first_name', function(data) {
-              window.location="/game"
-            });
-          }
-        }
-
-        FB.getLoginStatus(function(response) {
-          // Check login status on load, and if the user is
-          // already logged in, go directly to the welcome message.
-          if (response.status == 'connected') {
-            onLogin(response);
-          } else {
-            // Otherwise, show Login dialog first.
-            FB.login(function(response) {
-              onLogin(response);
-            }, {scope: 'user_friends, email'});
-          }
-        });
-      };
-
-      (function(d, s, id){
-         var js, fjs = d.getElementsByTagName(s)[0];
-         if (d.getElementById(id)) {return;}
-         js = d.createElement(s); js.id = id;
-         js.src = "//connect.facebook.net/en_US/sdk.js";
-         fjs.parentNode.insertBefore(js, fjs);
-       }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <div id="login" class="section active">
-      <div class="login-content">
-        <div class="logo"><img src="/assets/images/logo2.png" alt=""></div>
-        <div class="content">
-          <fb:login-button scope="user_friends,email" onlogin="onLogin();" data-size="xlarge"></fb:login-button>
-        </div>
+    <div id="suporte" class="section active">
+      <div class="suporte-content">
+        <a href="#comofunciona" id="help" class="btn-default">Clique aqui e saiba como funciona o jogo.</a>
+        <p>Alguma dúvida, crítica ou sugestão? Envie um email para: jc.juninho@hotmail.com</p>
+        <a href="/" class="btn-default">Voltar para o jogo</a>
       </div>
     </div>
 
-    <a href="#comofunciona" class="help-link">Como funciona</a>
+    
     <div class="overlay"></div>
     <div id="modal-help" class="modal">
       <div class="modal-close"><button></button></div>
@@ -88,7 +46,7 @@
         $(this).closest('.modal').removeClass('show')
       });
 
-      $('.help-link').click(function() {
+      $('#help').click(function() {
         $('.overlay').toggle();
         $('#modal-help').toggleClass('show');
 

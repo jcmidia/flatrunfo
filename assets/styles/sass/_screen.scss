@@ -51,6 +51,31 @@ body{
   }
 }
 
+.suporte-content{
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate3d(-50%,-50%,0);
+  transform: translate3d(-50%,-50%,0);
+
+  a{
+    height: 40px;
+    line-height: 40px;
+    text-transform: uppercase;
+    border: none;
+    padding: 0;
+    margin: 20px 0;
+    display: inline-block;
+    background: $secondary-bg;
+    color: $secondary-color;
+    padding: 0 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-decoration: none;
+  }
+}
+
 
 
 .content{
