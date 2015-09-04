@@ -94,7 +94,7 @@ io.sockets.on('connection', function (socket){
   		if (room.isAvailable()) {
 
 			  	room.addPerson(socket.id);
-			  	
+
 			  	people[socket.id].inroom=room.id;
 
 			  	var players = [];
@@ -227,25 +227,32 @@ io.sockets.on('connection', function (socket){
 
 	  	var playerleft = people[socket.id];
 
-	  	if(people[socket.id].inroom != null){
-	  		for (var index in rooms) {
-			  if (rooms[index].id==people[socket.id].inroom) {
-			  	
-			  	io.sockets.in(people[socket.id].inroom).emit("left game", {player: playerleft, status: rooms[index].status});
+	  	console.log(people[socket.id]);
+	  	console.log(people);
 
-			  	rooms[index].status="game over";
-			  	rooms[ index ].removePerson(socket.id);
+	  	if (people[socket.id]!==undefined) {
 
-			  	if (rooms[index].people.length==0) {
-			  		rooms.splice(index, 1);
-			  	}
+		  	if(people[socket.id].inroom != null){
+		  		for (var index in rooms) {
+				  if (rooms[index].id==people[socket.id].inroom) {
+				  	
+				  	io.sockets.in(people[socket.id].inroom).emit("left game", {player: playerleft, status: rooms[index].status});
 
-			  }
-			}
-	  	}
+				  	rooms[index].status="game over";
+				  	rooms[ index ].removePerson(socket.id);
+
+				  	if (rooms[index].people.length==0) {
+				  		rooms.splice(index, 1);
+				  	}
+
+				  }
+				}
+		  	}
+
 	    delete people[socket.id];
-	    
 	    clearInterval(timer[socket.id]);
+		}
+	    
   	});
 
 });
