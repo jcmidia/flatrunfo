@@ -54,11 +54,9 @@
     <div id="login" class="section active">
       <div class="login-content">
         <div class="logo"><img src="/assets/images/logo2.png" alt=""></div>
-        <form id="formJoin" method="post">
-          <h2>Digite seu nome abaixo</h2>
-          <input type="text" name="username" id="username">
-          <input type="submit" value="Entrar">
-        </form>
+        <div class="content">
+          <fb:login-button scope="user_friends,email" onlogin="onLogin();" data-size="xlarge"></fb:login-button>
+        </div>
       </div>
     </div>
 

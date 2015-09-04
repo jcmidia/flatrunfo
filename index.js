@@ -32,6 +32,7 @@ http.listen(app.get('port'), function(){
 
 var shortid = require('shortid');
 var Room = require("./requires/Rooms.js");
+var Player = require("./requires/Players.js");
 var Cards = require("./requires/Cards.js");
 
 
@@ -60,100 +61,119 @@ function millisToMinutesAndSeconds(millis) {
 
 
 
-
 io.sockets.on('connection', function (socket){
   	// people[socket.id] = {"name" : "undefined", "inroom": null};
 
 	socket.on('login', function(data){
-		
-		people[socket.id] = {"name" : data.first_name, "inroom": null, "fbid": data.id, "picture": data.picture.data.url};
+		var player = new Player(socket.id, data.first_name, null, data.id, data.picture.data.url);
+		people[socket.id]=player;
+		io.sockets.emit("rooms", {rooms: rooms, players: people});
+	});
+
+	socket.on('create room', function(data){
+		var room = createRoom();
+		room.addPerson(socket.id);
+		people[socket.id].inroom=room.id;
 		io.sockets.emit("rooms", {rooms: rooms, players: people});
 
-	});  	
-
-
-  	socket.on('join', function(username){
-	  	var room = getAvaliableRoomId();
-	  	room.addPerson(socket.id);
-
-	  	people[socket.id] = {"name" : username, "inroom": room.id};
-
-
-	  	var players = [];
+		var players = [];
 	  	for (var index in room.people) {
 			players.push(people[room.people[index]]);
 		}
 
-
-	    socket.join(room.id);
+		socket.join(room.id);
 	  	io.sockets.in(room.id).emit("new player", {room: room, players: players, playerid: socket.id});
-	  	
-
-	  	if (room.people.length==2) {
-
-	  		room.status="playing";
-
-	  		var request = http1.get( "http://flatrunfo.herokuapp.com/assets/cards.json", function(response) {
-	  	
-			  	var body = '';
-
-			    response.on('data', function(chunk) {
-			        body += chunk;
-			    });
-
-			    response.on('end', function() {
-			        var data = JSON.parse(body);
-			        
-			        cards[room.id] = new Cards();
-			        cards[room.id].setCards(room.people, data);
+	});  	
 
 
-			        var deck1 = cards[room.id].getNumCards(0);
-			        var deck2 = cards[room.id].getNumCards(1);
-			        cardsqty = {deck1: deck1, deck2: deck2 };
+  	socket.on('join', function(roomid){
+
+  		var room = getRoomById(roomid);
+  		console.log(room.isAvailable());
+
+  		if (room.isAvailable()) {
+
+			  	room.addPerson(socket.id);
+			  	
+			  	people[socket.id].inroom=room.id;
+
+			  	var players = [];
+			  	for (var index in room.people) {
+					players.push(people[room.people[index]]);
+				}
 
 
-			        var roomid=room.id;
-			        for (var index in room.people) {
-						io.to(room.people[index]).emit("start game", {pindex: index, deck: cards[room.id].getCards(index), cardsqty: cardsqty });
-					}
+			    socket.join(room.id);
+			  	io.sockets.in(room.id).emit("new player", {room: room, players: players, playerid: socket.id});
+			  	
+
+			  	if (room.people.length==room.peopleLimit) {
+
+			  		var request = http1.get( "http://flatrunfo.herokuapp.com/assets/cards.json", function(response) {
+			  	
+					  	var body = '';
+
+					    response.on('data', function(chunk) {
+					        body += chunk;
+					    });
+
+					    response.on('end', function() {
+					        var data = JSON.parse(body);
+					        
+					        cards[room.id] = new Cards();
+					        cards[room.id].setCards(room.people, data);
 
 
-					timer[socket.id] = setInterval(function(){
-						room.time=room.time-1000;
+					        var deck1 = cards[room.id].getNumCards(0);
+					        var deck2 = cards[room.id].getNumCards(1);
+					        cardsqty = {deck1: deck1, deck2: deck2 };
 
-						var timetext = millisToMinutesAndSeconds(room.time);
 
-						io.sockets.in(room.id).emit("update time", {time: timetext});
-
-						if (room.time==0) {
-							clearInterval(timer[socket.id]);
-
-							deck1 = cards[room.id].getNumCards(0);
-							deck2 = cards[room.id].getNumCards(1);
-
-							var winner=0
-							if (deck1>deck2) {
-								winner=1;
-							}else if(deck2>deck1){
-								winner=2;
-							}else{
-								winner=0;
+					        var roomid=room.id;
+					        for (var index in room.people) {
+								io.to(room.people[index]).emit("start game", {pindex: index, deck: cards[room.id].getCards(index), cardsqty: cardsqty });
 							}
-							io.sockets.in(room.id).emit("game over", {winner: winner});
-							room.status="game over";
-
-						};
-					}, 1000);
-			        
-			    });
 
 
-			}).on('error', function(e) {
-			    console.log("Got error: ", e);
-			});
+							timer[socket.id] = setInterval(function(){
+								room.time=room.time-1000;
 
-	  	};
+								var timetext = millisToMinutesAndSeconds(room.time);
+
+								io.sockets.in(room.id).emit("update time", {time: timetext});
+
+								if (room.time==0) {
+									clearInterval(timer[socket.id]);
+
+									deck1 = cards[room.id].getNumCards(0);
+									deck2 = cards[room.id].getNumCards(1);
+
+									var winner=0
+									if (deck1>deck2) {
+										winner=1;
+									}else if(deck2>deck1){
+										winner=2;
+									}else{
+										winner=0;
+									}
+									io.sockets.in(room.id).emit("game over", {winner: winner});
+									room.status="game over";
+
+								};
+							}, 1000);
+					        
+					    });
+
+
+					}).on('error', function(e) {
+					    console.log("Got error: ", e);
+					});
+
+			  	};
+
+		}else{
+			io.to(socket.id).emit("join error", "Sala não disponível!");
+		}
   	});
 
 	socket.on('play', function(data){
@@ -205,18 +225,21 @@ io.sockets.on('connection', function (socket){
   	socket.on('disconnect', function(){
 
 
-	  	var roomid = people[socket.id].inroom;
 	  	var playerleft = people[socket.id];
 
 	  	if(people[socket.id].inroom != null){
 	  		for (var index in rooms) {
-			  if (rooms[index].id==roomid) {
-			  	io.sockets.in(roomid).emit("left game", {player: playerleft, status: rooms[index].status});
+			  if (rooms[index].id==people[socket.id].inroom) {
+			  	
+			  	io.sockets.in(people[socket.id].inroom).emit("left game", {player: playerleft, status: rooms[index].status});
+
 			  	rooms[index].status="game over";
 			  	rooms[ index ].removePerson(socket.id);
+
 			  	if (rooms[index].people.length==0) {
 			  		rooms.splice(index, 1);
 			  	}
+
 			  }
 			}
 	  	}
@@ -226,6 +249,28 @@ io.sockets.on('connection', function (socket){
   	});
 
 });
+
+function createRoom(){
+
+	var room = new Room(shortid.generate());
+	rooms.push(room);
+	return room;
+
+}
+
+
+
+function getRoomById(roomid){
+	for (var index in rooms) {
+	  if (rooms[index].id==roomid) {
+
+	  	return rooms[index];
+
+	  	break;
+	  }
+	}
+}
+
 
 
 function getAvaliableRoomId(){

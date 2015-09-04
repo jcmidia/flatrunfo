@@ -2,15 +2,18 @@ function Room(id) {
   this.id = id;
   this.people = [];
   this.peopleLimit = 2;
-  this.status = "available";
+  this.status = "Disponível";
   this.private = false;
   this.turno = 1;
   this.time=300000;
 };
 
 Room.prototype.addPerson = function(personID) {
-  if (this.status === "available") {
+  if (this.status === "Disponível") {
     this.people.push(personID);
+  }
+  if (this.people.length==this.peopleLimit) {
+    this.status="Ocupada";
   }
 };
 
@@ -50,7 +53,7 @@ Room.prototype.getPersonIndex = function(personID) {
 };
 
 Room.prototype.isAvailable = function() {
-  return this.available === "available";
+  return this.status === "Disponível";
 };
 
 Room.prototype.isPrivate = function() {

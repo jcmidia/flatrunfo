@@ -434,7 +434,7 @@ body {
   transform: translate3d(-50%, -50%, 0);
 }
 .login-content .logo {
-  padding: 50px 0;
+  padding: 20px 0;
   background: #000;
   border-radius: 30px 30px 0 0;
 }
@@ -442,12 +442,20 @@ body {
   width: 300px;
 }
 
-#formJoin {
+.content, #formJoin {
   display: inline-block;
   padding: 30px 100px;
   background-color: #a40000;
+  color: #fff;
   border-radius: 0 0 30px 30px;
+  box-sizing: border-box;
+  min-width: 500px;
 }
+.content h2, #formJoin h2 {
+  color: #fff;
+  margin: 0;
+}
+
 #formJoin h2 {
   margin: 0 0 10px;
   color: #fff;
@@ -472,6 +480,47 @@ body {
   color: #fff;
   padding: 0 15px;
   border-radius: 0 10px 10px 0;
+}
+
+#create-room {
+  height: 40px;
+  line-height: 40px;
+  text-transform: uppercase;
+  border: none;
+  padding: 0;
+  margin: 20px 0;
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: 0 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+#rooms h2 {
+  font-size: 20px;
+}
+
+#rooms-list {
+  margin: 20px auto;
+}
+#rooms-list th, #rooms-list td {
+  padding: 4px 25px 4px 15px;
+  text-align: left;
+  color: #333;
+}
+#rooms-list th {
+  background-color: #dedede;
+}
+#rooms-list td {
+  background-color: #fff;
+}
+#rooms-list tbody tr {
+  cursor: pointer;
+}
+#rooms-list tbody tr:hover td {
+  background-color: #f6f6f6;
 }
 
 #timer {

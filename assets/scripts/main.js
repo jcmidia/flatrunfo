@@ -3,6 +3,7 @@ var player;
 var turn = false;
 
 window.fbAsyncInit = function() {
+
   FB.init({
     appId      : '1634055343507101',
     xfbml      : true,
@@ -12,7 +13,6 @@ window.fbAsyncInit = function() {
   function onLogin(response) {
     if (response.status == 'connected') {
       FB.api('/me?fields=picture{url},first_name', function(data) {
-        console.log(data);
         socket.emit('login', data);
       });
     }
@@ -65,7 +65,34 @@ $('.help-link').click(function() {
 });
 
 socket.on('rooms', function(data){
-  console.log(data);
+  $('#rooms-list tbody').html("");
+  if (data.rooms.length>0) {
+    $.each(data.rooms, function(index, val) {
+      var player1name=data.players[val.people[0]].name;
+      var player2name="";
+      if (val.people.length==2) {
+        var player2name=data.players[val.people[1]].name;
+      }
+      $('#rooms-list tbody').prepend('<tr rel="'+val.id+'"><td>'+player1name+'</td><td>'+player2name+'</td><td>'+val.status+'</td></tr>');
+    });
+  };
+});
+
+
+$('#create-room').click(function() {
+  socket.emit('create room');
+  return false;  
+});
+
+$('#rooms-list').on('click', 'tbody tr', function() {
+  var roomid = $(this).attr("rel");
+  socket.emit('join', roomid);
+  return false;  
+});
+
+
+socket.on('join error', function(data){
+  alert(data);
 });
 
 

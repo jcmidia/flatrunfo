@@ -13,12 +13,22 @@
     <div id="login" class="section active">
       <div class="login-content">
         <div class="logo"><img src="/assets/images/logo2.png" alt=""></div>
-        <a href="#" class="" id="create-room">Criar sala</a>
-        <form id="formJoin" method="post">
-          <h2>Escolha uma sala abaixo</h2>
-          <input type="text" name="username" id="username">
-          <input type="submit" value="Entrar">
-        </form>
+        <div class="content" id="rooms">
+          <h2>Crie uma sala nova e espere por um jogador. <br>Ou entre em uma sala já criada abaixo</h2>
+          <div class="clearfix"></div>
+          <a href="#" class="" id="create-room">Criar sala</a>
+          <div class="clearfix"></div>
+          <table id="rooms-list">
+            <thead>
+              <th>Jogador 1</th>
+              <th>Jogador 2</th>
+              <th></th>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
