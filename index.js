@@ -89,7 +89,6 @@ io.sockets.on('connection', function (socket){
   	socket.on('join', function(roomid){
 
   		var room = getRoomById(roomid);
-  		console.log(room.isAvailable());
 
   		if (room.isAvailable()) {
 
@@ -227,19 +226,18 @@ io.sockets.on('connection', function (socket){
 
 	  	var playerleft = people[socket.id];
 
-	  	console.log(people[socket.id]);
-	  	console.log(people);
-
 	  	if (people[socket.id]!==undefined) {
 
 		  	if(people[socket.id].inroom != null){
 		  		for (var index in rooms) {
 				  if (rooms[index].id==people[socket.id].inroom) {
+				  	console.log(rooms[index]);
 				  	
 				  	io.sockets.in(people[socket.id].inroom).emit("left game", {player: playerleft, status: rooms[index].status});
 
 				  	rooms[index].status="game over";
-				  	rooms[ index ].removePerson(socket.id);
+				  	rooms[index].removePerson(socket.id);
+				  	console.log(rooms[index]);
 
 				  	if (rooms[index].people.length==0) {
 				  		rooms.splice(index, 1);

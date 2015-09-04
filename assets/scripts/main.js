@@ -112,7 +112,6 @@ socket.on('new player', function(data){
 
 
 socket.on('left game', function(data){
-  console.log(data);
   turn = false;
   if (data.status!="game over") {
     $('#gameover').text("Você venceu! O jogador "+data.player.name+" saiu do jogo.");
