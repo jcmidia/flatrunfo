@@ -2,6 +2,7 @@
 {
 	"id": 1,
 	"nome": "Zico",
+	"bio": "Deus do Futebol",
 	"tipo": "A",
 	"jogos": 508,
 	"gols": 731,
