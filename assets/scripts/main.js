@@ -65,6 +65,7 @@ $('.help-link').click(function() {
 });
 
 socket.on('rooms', function(data){
+  $('#create-room').css('display', 'inline-block');;
   $('#rooms-list tbody').html("");
   if (data.rooms.length>0) {
     $.each(data.rooms, function(index, val) {
@@ -76,6 +77,11 @@ socket.on('rooms', function(data){
       $('#rooms-list tbody').prepend('<tr rel="'+val.id+'"><td>'+player1name+'</td><td>'+player2name+'</td><td>'+val.status+'</td></tr>');
     });
   };
+});
+
+
+$('.btn-logout').click(function() {
+  window.location="/game"; 
 });
 
 

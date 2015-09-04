@@ -67,7 +67,6 @@ function millisToMinutesAndSeconds(millis) {
 
 io.sockets.on('connection', function (socket){
   	// people[socket.id] = {"name" : "undefined", "inroom": null};
-
 	socket.on('login', function(data){
 		var player = new Player(socket.id, data.first_name, null, data.id, data.picture.data.url);
 		people[socket.id]=player;
@@ -225,6 +224,7 @@ io.sockets.on('connection', function (socket){
   	});
 
 
+
   	socket.on('disconnect', function(){
 
 
@@ -235,13 +235,11 @@ io.sockets.on('connection', function (socket){
 		  	if(people[socket.id].inroom != null){
 		  		for (var index in rooms) {
 				  if (rooms[index].id==people[socket.id].inroom) {
-				  	console.log(rooms[index]);
 				  	
 				  	io.sockets.in(people[socket.id].inroom).emit("left game", {player: playerleft, status: rooms[index].status});
 
 				  	rooms[index].status="game over";
 				  	rooms[index].removePerson(socket.id);
-				  	console.log(rooms[index]);
 
 				  	if (rooms[index].people.length==0) {
 				  		rooms.splice(index, 1);
@@ -280,31 +278,6 @@ function getRoomById(roomid){
 	}
 }
 
-
-
-function getAvaliableRoomId(){
-
-	var roomindex;
-
-	for (var index in rooms) {
-	  if (rooms[index].people.length<2) {
-	  	roomindex = rooms[index];
-	  	return roomindex;
-	  }
-	}
-
-	var room = new Room(shortid.generate());
-
-	rooms.push(room);
-
-	for (var index in rooms) {
-	  if (rooms[index].people.length<2) {
-	  	roomindex = rooms[index];
-	  	return roomindex;
-	  }
-	}
-
-}
 
 
 // app.get('/play/:id', function(req, res){

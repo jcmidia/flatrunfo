@@ -134,13 +134,13 @@ body{
   border: none;
   padding: 0;
   margin: 20px 0;
-  display: inline-block;
   background: $secondary-bg;
   color: $secondary-color;
   padding: 0 15px;
   border-radius: 10px;
   font-size: 14px;
   text-decoration: none;
+  display: none;
 }
 
 #rooms h2{
@@ -169,7 +169,8 @@ body{
     cursor: pointer;
 
     &:hover td{
-      background-color: #f6f6f6;
+      background-color: $secondary-bg;
+      color: $secondary-color;
     }
   }
 }
@@ -211,6 +212,55 @@ body{
   }
 }
 
+.btn-logout {
+  cursor: pointer;
+  padding: 14px 6px;
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  background-color: $secondary-bg;
+
+  button{
+    width: 20px;
+    height: 2px;
+    background-color: transparent;
+    text-indent: -99999px;
+    display: block;
+    position: relative;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: none;
+
+    &:before, &:after {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: #FFF;
+      content: '';
+      -webkit-transition: -webkit-transform 0.3s;
+      transition: transform 0.3s;
+    }
+
+    &:before {
+      -webkit-transform: translateY(0) rotate(45deg);
+      transform: translateY(0) rotate(45deg);
+    }
+
+    &:after {
+      -webkit-transform: translateY(0) rotate(-45deg);
+      transform: translateY(0) rotate(-45deg);
+    }
+  }
+}
+
 .playername{
   width: 50%;
   float: left;
@@ -226,9 +276,9 @@ body{
   display: table;
   position: absolute;
   left: 50%;
-  top: 50%;
-  -webkit-transform: translate3d(-50%,-50%,0);
-  transform: translate3d(-50%,-50%,0);
+  top: 200px;
+  -webkit-transform: translate3d(-50%,0,0);
+  transform: translate3d(-50%,0,0);
 }
 
 .board-content{
@@ -238,8 +288,8 @@ body{
 }
 
 .cards{
-  width: 400px;
-  height: 460px;
+  width: 350px;
+  height: 420px;
   float: left;
   margin: 0 50px;
 }
@@ -283,6 +333,10 @@ body{
       padding: 10px 30px;
       border-bottom: 1px solid #ccc;
 
+      &:first-child{
+        
+      }
+
       &:last-child{
         border-bottom: none;
       }
@@ -300,6 +354,8 @@ body{
       span.key{
         display: inline-block;
         width: 80px;
+        font-weight: bold;
+        font-size: 14px;
       }
     }
   }
@@ -377,6 +433,11 @@ body{
   &.failure{
     background-color: #d9534f;
     border-color: #d43f3a;
+  }
+
+  &.info{
+    background-color: #f0ad4e;
+    border-color: #eea236;
   }
 }
 
@@ -475,12 +536,6 @@ body{
       .key{
         width: 50px;
       }
-
-      &:first-child{
-        .key{
-          display: none;
-        }
-      }
     }
 
     #gameover{
@@ -546,7 +601,7 @@ body{
 
 .modal-close {
   cursor: pointer;
-  padding: 14px 5px;
+  padding: 14px 6px;
   display: block;
   position: absolute;
   right: -10px;
