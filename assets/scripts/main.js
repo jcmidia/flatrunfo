@@ -247,6 +247,7 @@ socket.on('new turn', function(data){
         setTimeout(function() {
 
             $.each(data.deck, function(index, val) {
+                $('#cards-player'+player+' ul li span[rel="bio"]').text("");
                 if (index=='img') {
                   $('#cards-player'+player+' img').attr("src", val);
                 }else{

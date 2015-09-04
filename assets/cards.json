@@ -12,6 +12,7 @@
 {
 	"id": 2,
 	"nome": "Dida",
+	"bio": "Maior artilheiro do Flamengo até a era Zico",
 	"tipo": "A",
 	"jogos": 357,
 	"gols": 264,
@@ -21,6 +22,7 @@
 {
 	"id": 3,
 	"nome": "Júnior",
+	"bio": "O Maestro",
 	"tipo": "A",
 	"jogos": 857,
 	"gols": 73,
@@ -30,6 +32,7 @@
 {
 	"id": 4,
 	"nome": "Leandro",
+	"bio": "O maior lateral direito de todos os tempos",
 	"tipo": "A",
 	"jogos": 417,
 	"gols": 14,
@@ -39,6 +42,7 @@
 {
 	"id": 5,
 	"nome": "Petković",
+	"bio": "É o Pet, É o Pet, É o Pet",
 	"tipo": "A",
 	"jogos": 198,
 	"gols": 57,
@@ -48,6 +52,7 @@
 {
 	"id": 6,
 	"nome": "Leônidas",
+	"bio": "O Diamante Negro. Inventou o gol de bicicleta!",
 	"tipo": "A",
 	"jogos": 149,
 	"gols": 153,
@@ -57,6 +62,7 @@
 {
 	"id": 7,
 	"nome": "Zizinho",
+	"bio": "Um dos maiores ídolos do Fla antes de Zico",
 	"tipo": "A",
 	"jogos": 329,
 	"gols": 146,
@@ -66,6 +72,7 @@
 {
 	"id": 8,
 	"nome": "Domingos",
+	"bio": "Divino Mestre",
 	"tipo": "A",
 	"jogos": 223,
 	"gols": 0,
@@ -75,6 +82,7 @@
 {
 	"id": 9,
 	"nome": "Raul",
+	"bio": "Campeão do mundo pelo Rubro-Negro em 1981",
 	"tipo": "A",
 	"jogos": 228,
 	"gols": 0,
@@ -84,6 +92,7 @@
 {
 	"id": 10,
 	"nome": "Nunes",
+	"bio": "Artilheiro das Decisões",
 	"tipo": "A",
 	"jogos": 214,
 	"gols": 93,
@@ -93,6 +102,7 @@
 {
 	"id": 11,
 	"nome": "Carlinhos",
+	"bio": "O Violino",
 	"tipo": "B",
 	"jogos": 517,
 	"gols": 23,
@@ -102,6 +112,7 @@
 {
 	"id": 12,
 	"nome": "Adílio",
+	"bio": "Terceiro jogador que mais vestiu a camisa do Flamengo",
 	"tipo": "B",
 	"jogos": 615,
 	"gols": 128,
@@ -111,6 +122,7 @@
 {
 	"id": 13,
 	"nome": "Rondinelli",
+	"bio": "Deus da Raça",
 	"tipo": "B",
 	"jogos": 396,
 	"gols": 14,
@@ -120,6 +132,7 @@
 {
 	"id": 14,
 	"nome": "Evaristo",
+	"bio": "Tri-campeão carioca pelo Flamengo",
 	"tipo": "B",
 	"jogos": 223,
 	"gols": 107,
@@ -129,6 +142,7 @@
 {
 	"id": 15,
 	"nome": "Julio Cesar",
+	"bio": "Foi promovido ao profissional com 17 anos",
 	"tipo": "B",
 	"jogos": 163,
 	"gols": 0,
@@ -138,6 +152,7 @@
 {
 	"id": 16,
 	"nome": "Andrade",
+	"bio": "Esportista que mais venceu o Campeonato Brasileiro",
 	"tipo": "B",
 	"jogos": 569,
 	"gols": 28,
@@ -147,6 +162,7 @@
 {
 	"id": 17,
 	"nome": "Adriano",
+	"bio": "Imperador",
 	"tipo": "B",
 	"jogos": 56,
 	"gols": 29,
@@ -156,6 +172,7 @@
 {
 	"id": 18,
 	"nome": "Fio Maravilha",
+	"bio": "Um dos mais folclóricos jogadores do Flamengo",
 	"tipo": "B",
 	"jogos": 289,
 	"gols": 79,
