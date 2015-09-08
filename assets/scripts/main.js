@@ -189,9 +189,9 @@ socket.on('start game', function(data){
 socket.on('new play', function(data){
 
   $('.cardactive ul li span[rel="'+data.key+'"]').parent().addClass('active');
-  $('.cardactive ul li span[rel="bio"]').text("");
 
   if (player==1) {
+    $('#cards-player2 ul li span[rel="bio"]').text("");
     $.each(data.card2, function(index, val) {
       if (index=='img') {
         $('#cards-player2 img').attr("src", val);
@@ -202,6 +202,7 @@ socket.on('new play', function(data){
 
     $('#cards-player2 .cardactive').removeClass('cardoff');
   }else{
+    $('#cards-player1 ul li span[rel="bio"]').text("");
     $.each(data.card1, function(index, val) {
         if (index=='img') {
           $('#cards-player1 img').attr("src", val);
@@ -247,8 +248,8 @@ socket.on('new turn', function(data){
 
         setTimeout(function() {
 
+            $('#cards-player'+player+' ul li span[rel="bio"]').text("");
             $.each(data.deck, function(index, val) {
-                $('#cards-player'+player+' ul li span[rel="bio"]').text("");
                 if (index=='img') {
                   $('#cards-player'+player+' img').attr("src", val);
                 }else{
