@@ -2,9 +2,9 @@
 {
 	"id": 1,
 	"nome": "Zico",
-	"bio": "Deus do Futebol",
+	"bio": "O Maior jogador de todos os tempos",
 	"tipo": "A",
-	"jogos": 508,
+	"jogos": 732,
 	"gols": 731,
 	"titulos": 13,
 	"img": "/assets/images/cards/zico.jpg"
@@ -112,7 +112,7 @@
 {
 	"id": 12,
 	"nome": "Adílio",
-	"bio": "Terceiro jogador que mais vestiu a camisa do Flamengo",
+	"bio": "3º jogador que mais jogou pelo Flamengo",
 	"tipo": "B",
 	"jogos": 615,
 	"gols": 128,
@@ -182,6 +182,7 @@
 {
 	"id": 19,
 	"nome": "Romário",
+	"bio": "Gênio da Grande Área",
 	"tipo": "B",
 	"jogos": 240,
 	"gols": 204,
@@ -191,6 +192,7 @@
 {
 	"id": 20,
 	"nome": "Léo Moura",
+	"bio": "7º jogador que mais jogou pelo Flamengo",
 	"tipo": "B",
 	"jogos": 519,
 	"gols": 47,
@@ -200,6 +202,7 @@
 {
 	"id": 21,
 	"nome": "Obina",
+	"bio": "Melhor que Eto'o",
 	"tipo": "C",
 	"jogos": 182,
 	"gols": 47,
@@ -209,6 +212,7 @@
 {
 	"id": 22,
 	"nome": "Ronaldo Angelim",
+	"bio": "O Magro de Aço",
 	"tipo": "C",
 	"jogos": 284,
 	"gols": 17,
@@ -218,6 +222,7 @@
 {
 	"id": 23,
 	"nome": "Sávio",
+	"bio": "Anjo Loiro da Gávea",
 	"tipo": "C",
 	"jogos": 265,
 	"gols": 95,
@@ -227,6 +232,7 @@
 {
 	"id": 24,
 	"nome": "Tita",
+	"bio": "11º maior artilheiro do Flamengo",
 	"tipo": "C",
 	"jogos": 289,
 	"gols": 89,
@@ -236,6 +242,7 @@
 {
 	"id": 25,
 	"nome": "Cantareli",
+	"bio": "Goleiro que mais atuou pelo Flamengo",
 	"tipo": "C",
 	"jogos": 557,
 	"gols": 0,
@@ -245,6 +252,7 @@
 {
 	"id": 26,
 	"nome": "Mozer",
+	"bio": "Campeão mundial pelo Flamengo",
 	"tipo": "C",
 	"jogos": 293,
 	"gols": 21,
@@ -254,6 +262,7 @@
 {
 	"id": 27,
 	"nome": "Bebeto",
+	"bio": "Destaque do título brasileiro de 87",
 	"tipo": "C",
 	"jogos": 95,
 	"gols": 41,
@@ -263,6 +272,7 @@
 {
 	"id": 28,
 	"nome": "Ronaldinho Gaúcho",
+	"bio": "Flamengo é Flamengo",
 	"tipo": "C",
 	"jogos": 72,
 	"gols": 28,
@@ -272,6 +282,7 @@
 {
 	"id": 29,
 	"nome": "Reyes",
+	"bio": "5º estrangeiro que mais jogou pelo Flamengo",
 	"tipo": "C",
 	"jogos": 196,
 	"gols": 7,
@@ -281,6 +292,7 @@
 {
 	"id": 30,
 	"nome": "Dequinha",
+	"bio": "Tri-campeão carioca pelo Flamengo 1953/54/55",
 	"tipo": "C",
 	"jogos": 384,
 	"gols": 8,

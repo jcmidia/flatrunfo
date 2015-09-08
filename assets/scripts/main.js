@@ -189,6 +189,7 @@ socket.on('start game', function(data){
 socket.on('new play', function(data){
 
   $('.cardactive ul li span[rel="'+data.key+'"]').parent().addClass('active');
+  $('.cardactive ul li span[rel="bio"]').text("");
 
   if (player==1) {
     $.each(data.card2, function(index, val) {
