@@ -22,6 +22,7 @@
         });
 
         function onLogin(response) {
+          console.log("chegou");
           if (response.status == 'connected') {
             FB.api('/me?fields=first_name', function(data) {
               window.location="/game"
@@ -37,6 +38,7 @@
           } else {
             // Otherwise, show Login dialog first.
             FB.login(function(response) {
+              console.log(response);
               onLogin(response);
             }, {scope: 'user_friends, email'});
           }

@@ -528,20 +528,27 @@ body {
 
 #rooms-list {
   margin: 20px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%;
 }
 #rooms-list th, #rooms-list td {
   padding: 4px 25px 4px 15px;
   text-align: left;
   color: #333;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 #rooms-list th {
   background-color: #dedede;
+  padding: 8px 25px 8px 15px;
 }
 #rooms-list td {
   background-color: #fff;
 }
 #rooms-list tbody tr {
   cursor: pointer;
+  border-bottom: 1px solid #e1e1e1;
 }
 #rooms-list tbody tr:hover td {
   background-color: #000;

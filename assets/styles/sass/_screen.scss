@@ -149,16 +149,22 @@ body{
 
 #rooms-list{
   margin: 20px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%;
 
   th, td{
     padding: 4px 25px 4px 15px;
     text-align: left;
     color: #333;
+    text-transform: uppercase;
+    font-size: 14px
   }
 
 
   th{
     background-color: #dedede;
+    padding: 8px 25px 8px 15px;
   }
 
   td{
@@ -167,6 +173,7 @@ body{
 
   tbody tr{
     cursor: pointer;
+    border-bottom: 1px solid #e1e1e1;
 
     &:hover td{
       background-color: $secondary-bg;
